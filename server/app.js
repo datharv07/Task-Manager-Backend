@@ -12,7 +12,7 @@ const app = express();
 dotenv.config({ path: "./config/config.env" });
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: process.env.FRONTEND_URL,
   credentials: true,
 };
 
@@ -20,7 +20,7 @@ app.use(cors(corsOptions));
 
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });
